@@ -48,23 +48,23 @@
 
 ## 🚀 快速开始
 
-### 1. 克隆仓库
+### 克隆仓库
 ```bash
 git clone https://github.com/pengjk0-dotcom/Auto-FMS-Analyzer.git
 cd Auto-FMS-Analyzer
-2. 后端启动（Python）
+### 后端启动（Python）
 Bashcd backend
 pip install -r requirements.txt
 python main.py
-3. 前端启动（React）
+### 前端启动（React）
 Bashcd frontend
 npm install
 npm run dev
 访问 http://localhost:5173 即可使用
 
-### 📄 开源协议
+## 📄 开源协议
 本项目基于 MIT License 协议开源。
 
-### ✍️ 关于作者
+## ✍️ 关于作者
 我是Peny，一名深耕 AI + 体育科技领域的产品经理。本项目源于我对 FMS 自动化测评的长期探索，旨在通过技术手段提升运动评估的效率与精准度，欢迎体育科技工作者、算法工程师进行交流与贡献。
-- 📧 联系方式：[13072719953@163.com]
+- 📧 联系方式：[13072719953@163.com
