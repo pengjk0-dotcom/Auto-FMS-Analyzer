@@ -1,31 +1,70 @@
-# FMS Vision Pro
+# Auto-FMS-Analyzer
 
-基于计算机视觉技术的 FMS (Functional Movement Screen) 自动化识别系统。
+基于无标记视觉技术的 FMS 自动化测评与纠正性训练处方系统
 
-## 技术架构
+![alt text](https://img.shields.io/badge/license-MIT-blue.svg)
+![alt text](https://img.shields.io/badge/frontend-React%2019-61dafb.svg)
+![alt text](https://img.shields.io/badge/backend-Python%203.9+-3776ab.svg)
+![alt text](https://img.shields.io/badge/AI-Pose%20Estimation-ff69b4.svg)
+**Auto FMS Analyzer** 是一款开源、智能、高精度的功能性动作筛查（FMS）自动化系统。通过先进的计算机视觉技术实时捕捉人体姿态，自动完成 **7 项标准 FMS 测试** 的动作识别、关节角度动态计算与专业评分（0-3 分），并提供针对性的改进建议。
 
-本项目旨在提供高精度的实时动作捕捉与评分，核心技术栈（模拟/规划）包括：
+系统采用**前后端分离架构**，前端使用 React + TypeScript + Tailwind CSS 提供现代流畅的用户界面，后端基于 MediaPipe Pose 实现高精度姿态检测与角度计算，适合康复医师、运动教练、运动科学研究员以及健身爱好者使用。
 
-- **YOLO26**: 用于超高精度的实时人体关键点检测与边界框回归。相较于早期版本，YOLO26 在边缘设备上提供了极低的延迟和更高的鲁棒性。
-- **Kalman Filter (卡尔曼滤波)**: 用于对 YOLO26 输出的关键点坐标进行平滑处理，消除视频帧间的抖动，预测被遮挡部位的运动轨迹，确保关节角度计算的连续性。
-- **Transformer**: 用于时序动作分析。通过收集连续帧的骨骼序列数据，Transformer 模型能够理解动作的上下文，精准判断动作的起始、结束以及代偿模式，从而给出科学的 FMS 评分（0-3分）。
+## ✨ 核心特性
 
-## 核心功能
+- **7 项 FMS 完整测试支持**  
+  Deep Squat、Hurdle Step、In-line Lunge、Shoulder Mobility、Active Straight Leg Raise、Trunk Stability Push-up、Rotary Stability
+- **实时视觉反馈**  
+  摄像头实时骨骼追踪 + 侧边栏动态显示各关节角度变化曲线
+- **智能评分引擎**  
+  基于官方 FMS 标准（Gray Cook 体系）的多维度分析（角度阈值、对称性、深度、稳定性）
+- **专业报告生成**  
+  测试结束后自动输出得分、问题诊断与个性化改进建议
+- **现代 Web 界面**  
+  支持桌面与平板，响应式设计，一键开始/结束测试
+- **高扩展性**  
+  模块化设计，易于接入 Kalman Filter 平滑、Transformer 时序模型、视频录制与云端报告导出
 
-1. **项目选择**: 支持 FMS 标准的 7 项测试（深蹲、跨栏步、直线弓箭步、肩部灵活性、主动直腿上抬、躯干稳定俯卧撑、旋转稳定性）。
-2. **实时识别**: 调用摄像头进行实时动作捕捉，侧边栏同步显示各关键关节（髋、膝、踝、肩等）的角度变化曲线。
-3. **智能评分**: 动作结束后，系统基于 Transformer 的时序分析输出 0-3 分的评分。
-4. **反馈与建议**: 提供详细的动作分析反馈和针对性的改进建议。
+## 🛠 技术架构
 
-## 开发与运行
+### 前端（frontend）
+- React 19 + TypeScript
+- Vite 构建工具
+- Tailwind CSS + shadcn/ui 组件库
+- 实时状态管理（Zustand / TanStack Query）
 
-本项目前端基于 React 19 + Vite + Tailwind CSS 构建。
+### 后端（backend）
+- Python 3.11+
+- MediaPipe Pose（高精度人体关键点检测）
+- OpenCV（图像处理与摄像头流）
+- 模块化评分引擎（每个 FMS 测试独立 Analyzer 类）
 
+### 未来规划（Roadmap）
+- Kalman Filter 姿态平滑与遮挡预测
+- Transformer 时序动作理解模型
+- 视频录制与离线分析
+- 报告 PDF/Excel 导出
+- 云端模型微调接口
+
+## 🚀 快速开始
+
+### 1. 克隆仓库
 ```bash
+git clone https://github.com/pengjk0-dotcom/Auto-FMS-Analyzer.git
+cd Auto-FMS-Analyzer
+2. 后端启动（Python）
+Bashcd backend
+pip install -r requirements.txt
+python main.py
+3. 前端启动（React）
+Bashcd frontend
 npm install
 npm run dev
-```
+访问 http://localhost:5173 即可使用
 
-## 开源协议
+### 📄 开源协议
+本项目基于 MIT License 协议开源。
 
-MIT License
+### ✍️ 关于作者
+我是Peny，一名深耕 AI + 体育科技领域的产品经理。本项目源于我对 FMS 自动化测评的长期探索，旨在通过技术手段提升运动评估的效率与精准度，欢迎体育科技工作者、算法工程师进行交流与贡献。
+- 📧 联系方式：[13072719953@163.com]
